@@ -20,8 +20,8 @@
       "Author": "flizc",
       "Java-version": 24,
       "Status": "Working Non Co-op",
-      "Version": "Undefinded",
-      "Progress(%)": "Unknown",
+      "Version": "1.0",
+      "Progress(%)": "1",
       "Description": "Some methods in order to verify the law of number changes in Collatz Conjecture.",
       "Features": "Completely made with Java. (We have made the same projects with Python Sonner)"
     }
@@ -35,8 +35,9 @@
       },
     "flizc": {
       "age": 16,
-      "Favorite-Thing": "MapleLeaf",
-      "Favorite=Game": "phira"
+      "Favorite-Thing": "Maple and Star",
+      "Favorite-Game": "phira and...java?"
+      "email": "1379308425@qq.com"
     }
   }
 }
