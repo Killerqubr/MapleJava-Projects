@@ -1,8 +1,12 @@
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 // 使用JFrame构建窗体
 public class Maple extends JFrame{
@@ -36,9 +40,9 @@ public class Maple extends JFrame{
             // 调用父类paint方法(整个Override实际上就是在原有paint上加新东西)
             super.paint(graphics);
 
-            // 新东西 I | 导入并绘制图像[脑残.jpg]
+            // 组件 I | 导入并绘制图像[脑残.jpg]
             Image image = new ImageIcon("MapleBox/images/脑残.jpg").getImage();
-            graphics.drawImage(image, 50, 50, 100, 100, null);
+            graphics.drawImage(image, 0, 0, 826, 547, null);
 
         }
     }

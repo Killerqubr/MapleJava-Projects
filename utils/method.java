@@ -3,7 +3,7 @@
  * @version 1.0 forever
  * Hope it would help you */ 
 
-package method;
+package utils;
 
 import java.util.Scanner;
 

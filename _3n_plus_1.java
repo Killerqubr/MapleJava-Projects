@@ -1,5 +1,5 @@
-import static _3n_plus_1_method._3n_plus_1_method.*;
-import static method.method.*;
+import static utils._3n_plus_1_method.*;
+import static utils.method.*;
 public class _3n_plus_1 {
     @SuppressWarnings("ConvertToStringSwitch")
 

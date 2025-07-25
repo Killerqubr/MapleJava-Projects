@@ -1,9 +1,7 @@
-package _3n_plus_1_method;
-
+package utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
-import method.method;
 
 public class _3n_plus_1_method {
 
