@@ -9,13 +9,13 @@ public class _3n_plus_1 {
             String parten = strInput("Please choose basic, pro, max or ultra parten:");
             if (parten.equals("basic")){
                 Basic();
-				msSleep(1000);
+		msSleep(1000);
             }else if (parten.equals("pro")){
                 Pro();
-				msSleep(1000);
+		msSleep(1000);
             }else if (parten.equals("max")){
                 Max();
-				msSleep(1000);
+		msSleep(1000);
             }else if (parten.equals("ultra")){
                 System.out.println("Oh my pccccccccccc!");
                 msSleep(2000);
