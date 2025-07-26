@@ -39,8 +39,8 @@ public class _3n_plus_1 {
 		}else if (re.equals("no")){
 		break;
 		}
-		System.out.println("You must want to retry!");
-		msSleep(1000);
+	    System.out.println("You must want to retry!");
+	    msSleep(1000);
         } while (true);
         System.out.println("quit");
         msSleep(2000);
