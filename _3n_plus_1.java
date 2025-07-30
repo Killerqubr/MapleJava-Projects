@@ -21,11 +21,11 @@ public class _3n_plus_1 {
                 msSleep(2000);
                 System.out.println("What are you talking about?!");
                 System.out.println("There is no ultra!!!!!");
-		msSleep(3000)
+		msSleep(3000);
 		System.out.println("Hello...I'm  ...ultra");
 		for(int i = 0;i <= 300;i++){
-		    System.out.println("GO BACK")
-		    msSleep(50)
+		    System.out.println("GO BACK");
+		    msSleep(50);
 		}
 		break;
             }else{

@@ -1,13 +1,8 @@
 package game;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.JPanel;
-
-//不许警告！！！
-@SuppressWarnings("BusyWait")
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
+import javax.swing.*;
 
 //贯彻Runnable并覆写其中的run() 使线程Thread正常运行
 public class GamePanel extends JPanel implements Runnable{
@@ -29,7 +24,6 @@ public class GamePanel extends JPanel implements Runnable{
 
     //定义时间常量防止魔法数字
     final double NANO_PER_SECOND = 1000000000.0;
-    final double NANO_PER_MS = 1000000.0;
 
     //实例化按键事件
     KeyHandler keyHandler = new KeyHandler();
@@ -39,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     int playerWidth = 48;
     double playerX = 100.0;
     double playerY = 100.0;
-    int fps = 12000;
+    int fps = 120;
     double playerspeed = 300;
 
     /*构造器 */
@@ -86,9 +80,9 @@ public class GamePanel extends JPanel implements Runnable{
 
             //休眠与处理负数报错
             try {
-                double sleepTime = (nextDrawTime - System.nanoTime())/NANO_PER_MS;
-                Thread.sleep((long)sleepTime);
-            } catch (InterruptedException | IllegalArgumentException e) {}
+                long sleepTime = (long)(nextDrawTime - System.nanoTime());
+                TimeUnit.NANOSECONDS.sleep(sleepTime);
+            } catch (InterruptedException e) {}
 
             //下一次绘制时间
             nextDrawTime += drawInterval;
