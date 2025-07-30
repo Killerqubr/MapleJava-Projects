@@ -87,7 +87,7 @@ public class ImageProcessor {
                 if ((Math.abs(red - targetColor[0]) <= tolerance &&
                     Math.abs(green - targetColor[1]) <= tolerance &&
                     Math.abs(blue - targetColor[2]) <= tolerance) ||
-                    (x % 10 == 0 && y % 10 == 0 && tolerance > 30)) {
+                    (x % 10 == 0 && y % 10 == 0 && /*?*/tolerance > 30)) {
                     
 
                     // 替换颜色
