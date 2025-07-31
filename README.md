@@ -21,10 +21,7 @@
       "Java-version": 21,
       "Status": "Working Non Co-op",
       "NumberOfMethods": 1,
-      "Description": "一个封装的类,可对图像进行加工",
-      "Easter-Egg1": "qnsj snsyd",
-      "Easter-Decode-Value": 5,
-      "isEaster-Uncovered": false
+      "Description": "一个封装的类,可对图像进行加工"
     },
     "3NPlus1": {
       "Author": "flizc",

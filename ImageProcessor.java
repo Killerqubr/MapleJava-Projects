@@ -9,8 +9,6 @@ import javax.imageio.ImageIO;
 
 public class ImageProcessor {
     // 图片色块改写的Java实现！
-    /* 致flizc : 在文件中隐藏了一个小算法(1行),每当tolerance大于30时会向图片添加噪点
-       ! 去找出并修复吧喵！~ */
     public static void main(String[] args) throws IOException {
         
         //读取图片 
@@ -42,9 +40,10 @@ public class ImageProcessor {
             switch (arg) {
                 case "-rP":
                     int matchCount = replacePixels(bufferedImage, 
-                                                new int[]{0, 0, 0}, 
-                                                new int[]{222, 213, 208}, 
-                                                50
+                                                new int[]{254, 254, 254, 255}, 
+                                                new int[]{222, 213, 208, 0}, 
+                                                50,
+                                                true
                     );
                         
                     // 输出处理后的图片
@@ -66,36 +65,45 @@ public class ImageProcessor {
         /* 模块 | 将匹配的色块颜色更改为指定颜色
         Ver.1.0 普通替换方法; 新增alpha通道替换
         */
-        private static int replacePixels(BufferedImage image, 
-                                        int[] targetColor, 
-                                        int[] newColor, 
-                                        int tolerance) {
+    private static int replacePixels(BufferedImage image,
+                                    int[] targetColor,
+                                    int[] newColor,
+                                    int tolerance,
+                                    boolean processAlpha) {
         int width = image.getWidth();
         int height = image.getHeight();
-        int matchCount = 0; // 统计像素匹配数
-        
-        // 循环遍历得到每个像素的RGB信息
+        int matchCount = 0;
+    
+        // 检查颜色数组长度
+        boolean targetHasAlpha = targetColor.length > 3;
+        boolean newHasAlpha = newColor.length > 3;
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-
                 int pixel = image.getRGB(x, y);
+                int alpha = (pixel >> 24) & 0xff;
                 int red   = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8)  & 0xff;
                 int blue  = pixel & 0xff;
 
-                // 检查颜色是否匹配（考虑容差）
-                if ((Math.abs(red - targetColor[0]) <= tolerance &&
+                // 颜色匹配检查（包括alpha通道条件）
+                boolean colorMatch = 
+                    Math.abs(red - targetColor[0]) <= tolerance &&
                     Math.abs(green - targetColor[1]) <= tolerance &&
-                    Math.abs(blue - targetColor[2]) <= tolerance) ||
-                    (x % 10 == 0 && y % 10 == 0 && tolerance > 30)) {
+                    Math.abs(blue - targetColor[2]) <= tolerance &&
+                    (!processAlpha || !targetHasAlpha || 
+                    Math.abs(alpha - targetColor[3]) <= tolerance);
+
+                if (colorMatch) {
+                    // 构建新像素值
+                    int newAlpha = processAlpha && newHasAlpha ? 
+                                    newColor[3] : alpha;
+                    int newPixel = (newAlpha << 24) | 
+                                    (newColor[0] << 16) | 
+                                    (newColor[1] << 8) | 
+                                    newColor[2];
                     
-
-                    // 替换颜色
-                    int newPixel = (255 << 24) | (newColor[0] << 16) | 
-                                    (newColor[1] << 8) | newColor[2];
                     image.setRGB(x, y, newPixel);
-
-                    // 信息处理
                     matchCount++;
                 }
             }
