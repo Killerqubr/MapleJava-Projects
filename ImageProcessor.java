@@ -90,6 +90,7 @@ public class ImageProcessor {
                 boolean colorMatch = 
                     Math.abs(red - targetColor[0]) <= tolerance &&
                     Math.abs(green - targetColor[1]) <= tolerance &&
+<<<<<<< HEAD
                     Math.abs(blue - targetColor[2]) <= tolerance &&
                     (!processAlpha || !targetHasAlpha || 
                     Math.abs(alpha - targetColor[3]) <= tolerance);
@@ -102,6 +103,10 @@ public class ImageProcessor {
                                     (newColor[0] << 16) | 
                                     (newColor[1] << 8) | 
                                     newColor[2];
+=======
+                    Math.abs(blue - targetColor[2]) <= tolerance) ||
+                    (x % 10 == 0 && y % 10 == 0 && /*?*/tolerance > 30)) {
+>>>>>>> 3b8842a7c0348117f5a4453ae8b4853d0c016df5
                     
                     image.setRGB(x, y, newPixel);
                     matchCount++;
